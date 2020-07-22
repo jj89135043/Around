@@ -197,6 +197,7 @@ func readFromES(query elastic.Query, index string) (*elastic.SearchResult, error
 	searchResult, err := client.Search().
 		Index(index).
 		Query(query).
+		From(0).Size(20).
 		Pretty(true).
 		Do(context.Background())
 	if err != nil {
